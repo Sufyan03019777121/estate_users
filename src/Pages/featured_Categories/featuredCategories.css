@@ -1,0 +1,120 @@
+.featured-wrap {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.featured-title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #505151;
+    font-weight: 700;
+}
+
+/* ✅ Grid Layout */
+.fc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 2% 8%;
+}
+
+/* ✅ Card Style */
+.fc-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.fc-card:hover {
+    transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* ✅ Image full card width */
+.fc-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.fc-card:hover .fc-image {
+    transform: scale(1.05);
+}
+
+/* ✅ Meta info */
+.fc-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.fc-card-title {
+    font-size: 0.8rem;
+    color: #545454;
+    font-weight: 600;
+    margin: 7px;
+
+}
+
+.fc-card-desc {
+    margin: 3px 0 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* ✅ Badge */
+.fc-badge {
+    background: #f59e0b;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* ✅ Responsive tweaks */
+
+
+@media (max-width: 768px) {
+    .fc-image {
+        width: auto;
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fc-image {
+        width: auto;
+        height: 220px;
+    }
+
+
+    .fc-card-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 399px) {
+    .fc-image {
+        width: auto;
+        height: 300px;
+    }
+
+    .fc-card-title {
+        font-size: 0.8rem;
+        color: #545454;
+        font-weight: 600;
+        margin-top: 30px;
+        margin-left: 30px;
+
+    }
+    .fc-card-desc{
+        margin-left: 20px;
+    }
+}

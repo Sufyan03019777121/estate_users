@@ -1,0 +1,44 @@
+.trusted-section {
+  background-color: #1b1b1b;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 5px;
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+.trusted-text {
+  font-size: 12px;
+  margin-bottom: 40px;
+  color: #d1d5db;
+  display: block;
+}
+
+.logo-container {
+  display: flex;
+  margin: 10px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-logo {
+  max-width: 100%;
+  max-height: 13px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.company-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ✅ Responsive tweaks (optional for better mobile view) */
+@media (max-width: 576px) {
+  .trusted-text {
+    font-size: 0.7rem;
+  }
+
+  
+}

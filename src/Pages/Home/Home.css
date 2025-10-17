@@ -1,0 +1,132 @@
+/* Overall container for Home page */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../assets/imags/elements.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .home-container {
+  min-height: 100vh;
+  }
+}
+
+/* Hero Banner */
+.hero-banner {
+  text-align: center;
+
+}
+
+/* Hero Banner Text */
+.hero-banner h2 {
+  color: aliceblue;
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  margin-top: 10%;
+
+
+}
+
+@media screen and (max-width: 470px) {
+  .hero-banner h2 {
+    margin-top: 0px !important;
+  }
+}
+
+.hero-banner p {
+  font-size: 16px;
+  color: aliceblue;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .hero-banner {
+    padding: 35px 15px;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .hero-banner h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    background-position: top center;
+    /* Ensure image fits smaller screens */
+    background-size: contain;
+    /* Scale image without cutting */
+  }
+
+  .hero-banner {
+    padding: 30px 10px;
+  }
+
+  .hero-banner h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-banner p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    background-position: top center;
+    background-size: contain;
+  }
+
+  .hero-banner {
+    padding: 20px 10px;
+  }
+
+  .hero-banner h2 {
+    font-size: 1.25rem;
+  }
+
+  .hero-banner p {
+    font-size: 13px;
+  }
+}
+/* Hero Banner Search Bar */
+.hero-search {
+  margin-top: 5px;
+  width: 18rem;
+  max-width: 500px;
+  padding: 5px 33px;
+  padding-bottom: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #6d6d6d;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Default placeholder (white) */
+.hero-search::placeholder {
+  color: white;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* On hover or focus — placeholder turns black */
+.hero-search:hover::placeholder,
+.hero-search:focus::placeholder {
+  color: #000;
+  opacity: 0.8;
+}
+
+.hero-search:hover,
+.hero-search:focus {
+  background: #fff;
+  border-color: #6d6d6d;
+  color: #6e6d6d;
+}

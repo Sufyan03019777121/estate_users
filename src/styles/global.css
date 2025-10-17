@@ -1,0 +1,80 @@
+:root {
+    --bg: #f5f7fb;
+    --muted: #6b7280;
+    --brand: #1677ff;
+}
+
+
+body {
+    font-family: Inter, Roboto, 'Segoe UI', Arial;
+    background: var(--bg);
+    margin: 0;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.brand {
+    margin: 0;
+    color: var(--brand);
+}
+
+.brand span {
+    color: #111;
+    font-weight: 700;
+}
+
+.header-center {
+    flex: 1;
+    max-width: 720px;
+    margin: 0 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-container {
+    padding: 18px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.property-card img {
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.app-content {
+    padding: 20px 12px 40px;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 18px 0;
+    background: transparent;
+}
+
+
+/* responsive tweaks */
+@media (max-width:768px) {
+    .header-center {
+        display: none;
+    }
+}

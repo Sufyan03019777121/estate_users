@@ -1,0 +1,87 @@
+/* Header Container */
+.navbar-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 0px;
+  background: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+/* Logo */
+.navbar-logo h4 {
+  margin: 0;
+}
+
+.navbar-logo span {
+  color: #1890ff;
+}
+
+.navbar-header .ant-menu-horizontal > .ant-menu-item::after {
+  bottom: 17px;  
+  height: 2px; 
+}
+
+/* Desktop Menu */
+.navbar-desktop {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Menu Items */
+.navbar-menu .ant-menu-horizontal > .ant-menu-item {
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+.navMenuItems_color{
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    color: #6d6d6d !important;
+}
+.navbar_addproperty_button{
+    border-radius: 20px;
+    font-size: 0.9rem ;
+    font-weight: 500;
+    color: #6d6d6d 
+}
+.navbar_phoneNumber{
+    font-size: 0.9rem ;
+    font-weight: 500;
+    color: #6d6d6d 
+}
+
+/* Phone */
+.navbar-phone {
+  display: flex;
+  align-items: center;
+  border-radius: 10px !;
+  gap: 5px;
+}
+
+/* Hamburger */
+.navbar-hamburger {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Drawer Buttons */
+.navbar-drawer-button {
+  margin-top: 20px;
+}
+
+/* Drawer Phone */
+.navbar-drawer-phone {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+/* Drawer Avatar */
+.navbar-drawer-avatar {
+  cursor: pointer;
+  margin-top: 10px;
+}

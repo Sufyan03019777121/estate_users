@@ -1,0 +1,51 @@
+.commercial-page {
+  padding: 30px;
+  text-align: center;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.commercial-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.commercial-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.commercial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.commercial-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.category {
+  display: block;
+  color: #666;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.no-data {
+  color: gray;
+  font-size: 18px;
+  margin-top: 20px;
+}
