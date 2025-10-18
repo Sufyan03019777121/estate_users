@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Row, Col, Typography } from "antd";
 import "./TeamSection.css";
-import team_pic1 from "../../assets/imags/team_pic1.png"
+import sir_rizwan from "../../assets/imags/sir_rizwan.jpeg"
 import team_pic2 from "../../assets/imags/team_pic2.png"
 import team_pic3 from "../../assets/imags/team_pic3.png"
 import team_pic4 from "../../assets/imags/team_pic4.png"
@@ -11,9 +11,9 @@ const { Title, Text } = Typography;
 const TeamSection = () => {
   const teamMembers = [
     {
-      name: "John Powell",
-      role: "Service Support",
-      image: team_pic1,
+      name: "Sir Rizwan",
+      role: "Supper Admin",
+      image: sir_rizwan,
     },
     {
       name: "Anna Brooks",
