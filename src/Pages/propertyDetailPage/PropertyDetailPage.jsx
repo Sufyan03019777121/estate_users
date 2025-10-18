@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Card,
+  Carousel,
+  Descriptions,
+  Typography,
+  Spin,
+  Button,
+  Row,
+  Col,
+  Empty,
+} from "antd";
+import {
+  ArrowLeftOutlined,
+  HomeOutlined,
+  DollarOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
+
+const { Title, Text, Paragraph } = Typography;
 
 export default function PropertyDetailPage() {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const API_URL = `http://localhost:5000/api/agent-properties/${id}`;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     fetchProperty();
   }, []);
 
@@ -20,106 +39,115 @@ export default function PropertyDetailPage() {
       setProperty(data);
     } catch (err) {
       console.error("Error fetching property details:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (!property) {
+  if (loading) {
     return (
-      <div className="text-center mt-5 text-secondary">
-        <div className="spinner-border text-primary" role="status"></div>
-        <p className="mt-3">Loading property details...</p>
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Spin size="large" />
+        <Text type="secondary" style={{ marginTop: 10 }}>
+          Loading property details...
+        </Text>
       </div>
     );
   }
 
+  if (!property) {
+    return (
+      <Empty
+        description="⚠️ Property not found or deleted."
+        style={{ marginTop: 100 }}
+      />
+    );
+  }
+
   return (
-    <div className="container my-5">
-      <Link to="/" className="btn btn-outline-secondary mb-4">
-        ← Back to Properties
+    <div className="container" style={{ padding: "40px 20px" }}>
+      <Link to="/">
+        <Button
+          type="default"
+          icon={<ArrowLeftOutlined />}
+          style={{ marginBottom: 20 }}
+        >
+          Back to Properties
+        </Button>
       </Link>
 
-      <div className="card shadow-lg border-0">
-        {/* 🖼️ Image Carousel */}
-        <div
-          id="propertyCarousel"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            {property.images?.map((img, index) => (
-              <div
-                key={index}
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
-              >
-                <img
-                  src={`http://localhost:5000/uploads/${img}`}
-                  className="d-block w-100"
-                  alt={property.title}
-                  style={{ height: "400px", objectFit: "cover" }}
-                />
-              </div>
-            ))}
-          </div>
-          {property.images?.length > 1 && (
-            <>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#propertyCarousel"
-                data-bs-slide="prev"
-              >
-                <span className="carousel-control-prev-icon"></span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#propertyCarousel"
-                data-bs-slide="next"
-              >
-                <span className="carousel-control-next-icon"></span>
-              </button>
-            </>
-          )}
-        </div>
-
-        {/* 🏠 Property Info */}
-        <div className="card-body">
-          <h3 className="card-title text-primary">{property.title}</h3>
-          <h5 className="text-success mb-3">
-            Rs. {property.price?.toLocaleString()}
-          </h5>
-
-          <div className="row text-start">
-            <div className="col-md-6">
-              <p>
-                <strong>Category:</strong> {property.category}
-              </p>
-              <p>
-                <strong>Furnished:</strong> {property.furnished}
-              </p>
-              <p>
-                <strong>Area:</strong> {property.area} Marla
-              </p>
+      <Card
+        hoverable
+        bordered={false}
+        style={{
+          boxShadow: "0 4px 25px rgba(0,0,0,0.1)",
+          borderRadius: 12,
+        }}
+      >
+        {/* Image Carousel */}
+        <Carousel autoplay>
+          {property.images?.map((img, i) => (
+            <div key={i}>
+              <img
+                src={`http://localhost:5000/uploads/${img}`}
+                alt={property.title}
+                style={{
+                  width: "100%",
+                  height: 400,
+                  objectFit: "cover",
+                  borderRadius: 10,
+                }}
+              />
             </div>
-            <div className="col-md-6">
-              <p>
-                <strong>Bedrooms:</strong> {property.bedrooms}
-              </p>
-              <p>
-                <strong>Bathrooms:</strong> {property.bathrooms}
-              </p>
-              <p>
-                <strong>Posted on:</strong>{" "}
-                {new Date(property.createdAt).toLocaleDateString()}
-              </p>
-            </div>
-          </div>
+          ))}
+        </Carousel>
 
-          <p className="mt-3">
-            <strong>Description:</strong> {property.description}
-          </p>
+        <div style={{ padding: "25px" }}>
+          <Title level={3} style={{ color: "#1677ff" }}>
+            <HomeOutlined /> {property.title}
+          </Title>
+          <Title level={4} type="success">
+            <DollarOutlined /> Rs. {property.price?.toLocaleString()}
+          </Title>
+
+          <Descriptions bordered column={2} size="middle" className="mt-3">
+            <Descriptions.Item label="Category">
+              {property.category || "N/A"}
+            </Descriptions.Item>
+            <Descriptions.Item label="Furnished">
+              {property.furnished || "N/A"}
+            </Descriptions.Item>
+            <Descriptions.Item label="Area">
+              {property.area} Marla
+            </Descriptions.Item>
+            <Descriptions.Item label="Bedrooms">
+              {property.bedrooms || "-"}
+            </Descriptions.Item>
+            <Descriptions.Item label="Bathrooms">
+              {property.bathrooms || "-"}
+            </Descriptions.Item>
+            <Descriptions.Item label="Posted on">
+              <CalendarOutlined />{" "}
+              {new Date(property.createdAt).toLocaleDateString()}
+            </Descriptions.Item>
+          </Descriptions>
+
+          <div style={{ marginTop: 20 }}>
+            <Title level={5}>Description</Title>
+            <Paragraph>
+              {property.description || "No description available."}
+            </Paragraph>
+          </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

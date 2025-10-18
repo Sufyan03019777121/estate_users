@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Card, Col, Row, Typography } from "antd";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  HomeOutlined,
+  DollarOutlined,
+  EnvironmentOutlined,
+} from "@ant-design/icons";
+import "antd/dist/reset.css";
+import "./CommercialPage.css";
+
+const { Title, Text } = Typography;
 
 export default function CommercialPage() {
   const [properties, setProperties] = useState([]);
@@ -15,75 +24,73 @@ export default function CommercialPage() {
     try {
       const res = await fetch(API_URL);
       const data = await res.json();
-
-      // ✅ Filter only relevant property types
       const filtered = data.filter((item) =>
         ["commercial", "office", "shop", "plot"].includes(
           item.category?.toLowerCase()
         )
       );
-
       setProperties(filtered);
     } catch (err) {
-      console.error("Error fetching properties:", err);
+      console.error(err);
     }
   };
 
   return (
-    <div className="container my-5">
-      <h2 className="text-center mb-4 fw-bold text-primary">
+    <div className="commercial-section">
+      <Title level={3} className="homes-title">
         Commercial Properties
-      </h2>
+      </Title>
+      <Text className="homes-subtitle">
+        Explore the latest commercial listings
+      </Text>
 
-      <div className="row g-4">
+      <Row gutter={[24, 24]} justify="center">
         {properties.length > 0 ? (
           properties.map((p) => (
-            <div key={p._id} className="col-md-4 col-sm-6">
-              <div className="card shadow-sm border-0 h-100">
-                <img
-                  src={
-                    p.images?.[0]
-                      ? `http://localhost:5000/uploads/${p.images[0]}`
-                      : "https://via.placeholder.com/300x200.png?text=No+Image"
-                  }
-                  className="card-img-top"
-                  alt={p.title}
-                  style={{
-                    height: "220px",
-                    objectFit: "cover",
-                    borderTopLeftRadius: "0.5rem",
-                    borderTopRightRadius: "0.5rem",
-                  }}
-                />
-                <div className="card-body text-start">
-                  <h5 className="card-title">{p.title}</h5>
-                  <p className="text-muted small mb-1">
-                    Category: {p.category}
-                  </p>
-                  <span className="badge bg-success mb-2">
-                    Rs. {p.price?.toLocaleString()}
-                  </span>
-                  <p className="card-text text-truncate">
-                    {p.description || "No description available."}
-                  </p>
+            <Col xs={24} sm={12} md={8} lg={6} key={p._id}>
+              <Card className="custom-card home-card" hoverable>
+                <div className="image-wrapper">
+                  <img
+                    src={
+                      p.images?.[0]
+                        ? `http://localhost:5000/uploads/${p.images[0]}`
+                        : "https://via.placeholder.com/300x200.png?text=No+Image"
+                    }
+                    alt={p.title}
+                    className="card-image"
+                  />
+                  <span className="for-sale-tag">For Sale</span>
+                </div>
 
-                  {/* ✅ View Details Button */}
+                <div className="card-header">
+                  <Text className="card-title">{p.title}</Text>
+                  <Text className="card-price">
+                    <DollarOutlined /> Rs. {p.price?.toLocaleString()}
+                  </Text>
+                </div>
+
+                <Text className="card-location">
+                  <EnvironmentOutlined /> {p.category}
+                </Text>
+
+                <div className="card-footer">
+                  <Text>
+                    <HomeOutlined /> ID: {p._id.slice(-6)}
+                  </Text>
                   <Link
                     to={`/detail/${p._id}`}
-                    className="btn btn-primary btn-sm"
+                    className="detail-btn"
                   >
                     View Details
                   </Link>
                 </div>
-              </div>
-            </div>
+              </Card>
+            </Col>
           ))
         ) : (
-          <p className="text-center text-secondary mt-4">
-            No commercial properties found.
-          </p>
+          <Text type="secondary">No commercial properties found.</Text>
         )}
-      </div>
+      </Row>
     </div>
   );
 }
