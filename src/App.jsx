@@ -62,7 +62,7 @@ export default function App() {
             fontSize: "14px",
           }}
         >
-          © {new Date().getFullYear()} DarzNursery. All rights reserved.
+         
         </ProFooter>
       </Layout>
     </Router>
