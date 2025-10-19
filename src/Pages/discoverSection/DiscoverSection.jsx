@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Typography, Row, Col } from "antd";
-import "./DiscoverSection.css";
+import "./discoverSection.css";
 
 const { Title, Paragraph } = Typography;
 

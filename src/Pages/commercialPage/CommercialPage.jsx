@@ -7,7 +7,7 @@ import {
   EnvironmentOutlined,
 } from "@ant-design/icons";
 import "antd/dist/reset.css";
-import "./CommercialPage.css";
+import "./commercialPage.css";
 
 const { Title, Text } = Typography;
 

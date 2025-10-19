@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Typography } from "antd";
-import "./TrustedCompanies.css"; 
+import "./trustedCompanies.css"; 
 
 import amazon from "../../assets/imags/brands/amazon.png";
 import amd from "../../assets/imags/brands/amd.png";

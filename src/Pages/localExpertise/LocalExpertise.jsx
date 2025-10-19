@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Typography, Button } from "antd";
 import { TeamOutlined } from "@ant-design/icons";
 import Local_expertise from "../../assets/imags/Local_expertise.png";
-import "./LocalExpertise.css";
+import "./localExpertise.css";
 
 const { Title, Paragraph } = Typography;
 

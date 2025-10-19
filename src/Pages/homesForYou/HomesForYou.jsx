@@ -6,7 +6,7 @@ import {
   UserOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
-import "./HomesForYou.css";
+import "./homesForYou.css";
 
 const { Title, Text } = Typography;
 
