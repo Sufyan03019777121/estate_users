@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Row, Col, Typography } from "antd";
 import "./teamSection.css";
-import sir_rizwan from "../../assets/imags/sir_rizwan.jpeg"
+import sir_rizwan from "../../assets/imags/sir rizwan.jpeg"
 import team_pic2 from "../../assets/imags/team_pic2.png"
 import team_pic3 from "../../assets/imags/team_pic3.png"
 import team_pic4 from "../../assets/imags/team_pic4.png"
