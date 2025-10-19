@@ -25,7 +25,7 @@ export default function PropertyDetailPage() {
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = `http://localhost:5000/api/agent-properties/${id}`;
+  const API_URL = `/api/agent-properties/${id}`;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -97,7 +97,7 @@ export default function PropertyDetailPage() {
           {property.images?.map((img, i) => (
             <div key={i}>
               <img
-                src={`http://localhost:5000/uploads/${img}`}
+                src={`/uploads/${img}`}
                 alt={property.title}
                 style={{
                   width: "100%",

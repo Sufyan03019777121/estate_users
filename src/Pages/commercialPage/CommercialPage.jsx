@@ -13,7 +13,7 @@ const { Title, Text } = Typography;
 
 export default function CommercialPage() {
   const [properties, setProperties] = useState([]);
-  const API_URL = "http://localhost:5000/api/agent-properties";
+  const API_URL = "/api/agent-properties";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -53,7 +53,7 @@ export default function CommercialPage() {
                   <img
                     src={
                       p.images?.[0]
-                        ? `http://localhost:5000/uploads/${p.images[0]}`
+                        ? `/uploads/${p.images[0]}`
                         : "https://via.placeholder.com/300x200.png?text=No+Image"
                     }
                     alt={p.title}
