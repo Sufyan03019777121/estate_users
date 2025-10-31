@@ -85,3 +85,45 @@
   cursor: pointer;
   margin-top: 10px;
 }
+
+
+
+/* model */
+.register-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.form-item {
+  font-size: 13px;
+}
+
+.form-item-full {
+  grid-column: 1 / -1;
+}
+
+.form-input {
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  height: 36px;
+  font-size: 13px;
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.register-btn {
+  background-color: #1677ff !important;
+  height: 38px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #489cf7 !important;
+}

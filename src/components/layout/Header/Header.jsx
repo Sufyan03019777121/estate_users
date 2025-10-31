@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Avatar, Dropdown, Typography, Button, Drawer } from "antd";
+import { Layout, Menu, Avatar, Typography, Button, Drawer, Dropdown } from "antd";
 import { UserOutlined, PhoneOutlined, PlusOutlined, MenuOutlined } from "@ant-design/icons";
+import RegisterAgentModal from "./registerAgentModal/RegisterAgentModal";
 import "./Header.css";
 
 const { Header } = Layout;
@@ -9,6 +10,7 @@ const { Title } = Typography;
 export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleResize = () => setIsMobile(window.innerWidth <= 910);
 
@@ -35,15 +37,9 @@ export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
   ];
 
   const navMenu = (
-    <Menu
-
-      mode={isMobile ? "vertical" : "horizontal"}
-      style={{ borderBottom: "none" }}
-
-    >
+    <Menu mode={isMobile ? "vertical" : "horizontal"} style={{ borderBottom: "none" }}>
       {navMenuItems.map((item) => (
         <Menu.Item
-
           key={item.key}
           onClick={() => {
             onNavigate && onNavigate(item.key);
@@ -56,7 +52,6 @@ export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
       ))}
     </Menu>
   );
-
 
   return (
     <Header className="navbar-header">
@@ -71,12 +66,8 @@ export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
       {!isMobile && (
         <div className="navbar-desktop">
           {navMenu}
-          <Button
-            className="navbar_addproperty_button"
-            icon={<PlusOutlined />}
-            onClick={() => onNavigate && onNavigate("addProperty")}
-          >
-            Add Property
+          <Button icon={<PlusOutlined />} className="navbar_addproperty_button" onClick={() => setIsModalVisible(true)}>
+            Register As An Agent
           </Button>
           <div className="navbar-phone">
             <PhoneOutlined style={{ fontSize: 16, color: "#1890ff" }} />
@@ -89,28 +80,13 @@ export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
       )}
 
       {/* Mobile Hamburger */}
-      {isMobile && (
-        <MenuOutlined className="navbar-hamburger" onClick={() => setVisible(true)} />
-      )}
+      {isMobile && <MenuOutlined className="navbar-hamburger" onClick={() => setVisible(true)} />}
 
       {/* Drawer */}
-      <Drawer
-        title="Menu"
-        placement="right"
-        onClose={() => setVisible(false)}
-        visible={visible}
-        width="80%"           // 👈 موبائل ڈراور width
-        bodyStyle={{ paddingTop: 20 }}
-      >
+      <Drawer title="Menu" placement="right" onClose={() => setVisible(false)} open={visible} width="80%" bodyStyle={{ paddingTop: 20 }}>
         {navMenu}
-        <Button
-          type="primary"
-          icon={<PlusOutlined />}
-          block
-          className="navbar-drawer-button"
-          onClick={() => onNavigate && onNavigate("addProperty")}
-        >
-          Add Property
+        <Button type="primary" icon={<PlusOutlined />} block className="navbar-drawer-button" onClick={() => setIsModalVisible(true)}>
+          Register As An Agent
         </Button>
         <div className="navbar-drawer-phone">
           <PhoneOutlined />
@@ -121,6 +97,8 @@ export default function Navbar({ phoneNumber = "0300-1234567", onNavigate }) {
         </Dropdown>
       </Drawer>
 
+      {/* Modal Component */}
+      <RegisterAgentModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} />
     </Header>
   );
 }
