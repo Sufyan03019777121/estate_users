@@ -7,7 +7,7 @@ const { Title, Text } = Typography;
 
 export default function RegisterAgentModal({ visible, onClose }) {
   const [loading, setLoading] = useState(false);
-  const API_URL = "http://localhost:5000/api/user-agents";
+  const API_URL = "https://estate-backend-kyiz.onrender.com/api/user-agents";
 
   const handleRegister = async (values) => {
     setLoading(true);
